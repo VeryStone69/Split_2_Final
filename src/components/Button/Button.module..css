@@ -1,0 +1,32 @@
+.button{
+    background-color: #0066CC;
+    border-radius: 15px;
+    width: 100px;
+    height: 50px;
+    margin: 10px 5px 10px 5px;
+    font-size: 30px;
+    border: 2px solid #ac96af;
+}
+
+/*.counter{*/
+/*    text-align: center;*/
+/*    font-size: 50px;*/
+/*    border-radius: 15px;*/
+/*    background-color: #0066CC;*/
+/*    border: 2px solid #ac96af;*/
+/*}*/
+
+/*.counterRED{*/
+/*    text-align: center;*/
+/*    font-size: 50px;*/
+/*    font-weight: 700;*/
+/*    color: red;*/
+/*    border: 2px solid #ac96af;*/
+/*    border-radius: 15px;*/
+/*    background-color: #0066CC;*/
+/*}*/
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}

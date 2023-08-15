@@ -1,0 +1,31 @@
+.error{
+    text-align: center;
+    background-color: #d95789;
+    border: 2px solid #a10606;
+    border-radius: 5px;
+    width: 9em;
+    height: 1.5em;
+    margin: 2px;
+
+}
+
+.notError {
+    text-align: center;
+    background-color: #badbff;
+    border: 2px solid #596585;
+    border-radius: 5px;
+    width: 9em;
+    height: 1.5em;
+    margin: 2px;
+}
+
+.inputItem{
+    display: flex;
+    justify-content: space-between;
+}
+
+.InputValueName {
+    color: #0066CC;
+    font-weight: bold;
+    font-size: 18px;
+}

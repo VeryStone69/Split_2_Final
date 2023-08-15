@@ -1,0 +1,17 @@
+.counterRED{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    color: red;
+    border: 2px solid #ac96af;
+    border-radius: 15px;
+    background-color: #0066CC;
+}
+
+.counter{
+    text-align: center;
+    font-size: 50px;
+    border-radius: 15px;
+    background-color: #0066CC;
+    border: 2px solid #ac96af;
+}

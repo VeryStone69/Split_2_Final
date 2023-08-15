@@ -1,0 +1,40 @@
+.counterError{
+    padding: 15px;
+    text-align: center;
+    font-size: 28px;
+    border-radius: 15px;
+    background-color: #d95789;
+    border: 2px solid #a10606;
+}
+
+.infoForUser{
+    color: #0066CC;
+    display: flex;
+    justify-content: center;
+    height: 37px;
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: rgba(0, 102, 204, 0.03);
+    border: 2px solid #ac96af;
+    align-content: center;
+    align-items: center;
+}
+
+.counterWrap {
+    border: 2px solid black;
+    padding: 25px 20px 25px 20px;
+    border-radius: 15px;
+    border: 3px solid #ac96af;
+    margin: 15px;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    border: 2px solid #ac96af;
+    border-radius: 15px;
+}
+
