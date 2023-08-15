@@ -15,6 +15,14 @@ function App() {
 
     // После перезагрузки страницы получаем из LocalStorage значение для настроек и главного счетчика
     useEffect(() => {
+        // Если при первой загрузке/перезагрузке LocalStorage пустой, то устанавливаем стартовые значения.
+        const start = localStorage.getItem("start value");
+        const max = localStorage.getItem("max value")
+        if (start === null || max === null) {
+            localStorage.setItem("start value", JSON.stringify(inputStartValue));
+            localStorage.setItem("max value", JSON.stringify(inputMaxValue));
+        }
+
         getValuesFromLocalStorage();
         const getIncrementValue = localStorage.getItem("incrementValue");
         if (getIncrementValue !== null) {
@@ -89,7 +97,7 @@ function App() {
         const max = localStorage.getItem("max value");
         const start = localStorage.getItem("start value");
         const incrementValue = localStorage.getItem("incrementValue")
-        if (incrementValue == "0") return true
+        // if (incrementValue == "0") return true
         if (max && start) {
             if (JSON.parse(max) !== inputMaxValue || JSON.parse(start) !== inputStartValue) return true;
         }
@@ -122,78 +130,3 @@ function App() {
 }
 
 export default App;
-
-//=================================================================================
-// return (
-//     <div className={"container"}>
-//         <SetMenu
-//             error={errorInInput}
-//             // info={infoForUser}
-//             disableReset={disableReset}
-//             maxCount={countMax}
-//             count={count}
-//             callBackInc={buttonClickInc}
-//             callBackReset={buttonClickReset}
-//         />
-//         {/*<div className={"counterWrap"}>*/}
-//         {/*    {errorInInput*/}
-//         {/*        ? <div className={counterStyle.counterError}>Incorrect Value</div>*/}
-//         {/*        : false*/}
-//         {/*            ? <div className={counterStyle.infoForUser}>Enter values and press 'set'</div>*/}
-//         {/*            : <Counter maxCount={countMax} count={count}/>}*/}
-//         {/*    /!*<Counter maxCount={countMax} count={count}/>*!/*/}
-//         {/*    <div className={"buttons"}>*/}
-//         {/*        <Button name={"inc"} callBack={buttonClickInc} disable={count === countMax}/>*/}
-//         {/*        <Button name={"reset"} callBack={buttonClickReset} disable={count !== countMax}/>*/}
-//         {/*    </div>*/}
-//         {/*</div>*/}
-//         <div className={"inputWrapper"}>
-//             <Input startValue={inputMaxValue}
-//                    callBack={setToMaxValue}
-//                    name={"max value"}
-//                    error={errorInInput}/>
-//             <Input startValue={inputStartValue}
-//                    callBack={setToStartValue}
-//                    name={"start value"}
-//                    error={errorInInput}/>
-//             <div className={"buttons"}>
-//                 <Button name={"set"}
-//                         callBack={setValue}
-//                         disable={errorInInput}
-//                 />
-//             </div>
-//         </div>
-//     </div>
-// );
-// ========================================================++++++++++++++++++++++ version 2.0
-// return (
-//     <div className={"container"}>
-//         <SetMenu
-//             error={errorInInput}
-//             maxCount={countMax}
-//             count={count}
-//             callBackInc={buttonClickInc}
-//             callBackReset={buttonClickReset}
-//             callBackInfoForUser={infoForUserCallBack}
-//         />
-//         <div className={"settingsWrapper"}>
-//             <div className={"inputContainer"}>
-//                 <Input startValue={inputMaxValue}
-//                        callBack={setToMaxValue}
-//                        name={"max value"}
-//                        error={errorInInput}/>
-//                 <Input startValue={inputStartValue}
-//                        callBack={setToStartValue}
-//                        name={"start value"}
-//                        error={errorInInput}/>
-//             </div>
-//             <div className={"buttons"}>
-//                 <Button name={"set"}
-//                         callBack={setValue}
-//                         disable={errorInInput || !infoForUserCallBack()}
-//                 />
-//             </div>
-//         </div>
-//     </div>
-// );
-// }
