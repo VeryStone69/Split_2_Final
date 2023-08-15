@@ -1,6 +1,10 @@
 .inputContainer {
+    display: flex;
     height: 71px;
+    flex-direction: column;
+    justify-content: space-around;
 }
+
 
 .setButton {
     margin-top: 10px;

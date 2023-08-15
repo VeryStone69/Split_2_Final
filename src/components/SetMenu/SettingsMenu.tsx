@@ -39,7 +39,7 @@ export const SettingsMenu: React.FC<SettingsMenuPropsType> = (props) => {
             <div className={s.setButton}>
                 <Button name={"set"}
                         callBack={setValue}
-                        disable={errorInInput || !infoForUserCallBack()}
+                        disable={errorInInput || !infoForUserCallBack()} // ! перед infoForUserCallBack
                 />
             </div>
         </div>

@@ -7,16 +7,17 @@ import {SettingsMenu} from "./components/SetMenu/SettingsMenu";
 function App() {
 
     const startCount = 0
+    const startMaxInput = 1
     const [count, setCount] = useState<number>(startCount)
     const [countMax, setCountMax] = useState<number>(startCount)
     const [inputStartValue, setInputStartValue] = useState<number>(startCount)
-    const [inputMaxValue, setInputMaxValue] = useState<number>(startCount)
+    const [inputMaxValue, setInputMaxValue] = useState<number>(startMaxInput)
 
     // После перезагрузки страницы получаем из LocalStorage значение для настроек и главного счетчика
     useEffect(() => {
         getValuesFromLocalStorage();
         const getIncrementValue = localStorage.getItem("incrementValue");
-        if (getIncrementValue) {
+        if (getIncrementValue !== null) {
             const newStartValue = JSON.parse(getIncrementValue)
             setCount(newStartValue)
         }
@@ -87,9 +88,12 @@ function App() {
     const infoForUserCallBack = () => {
         const max = localStorage.getItem("max value");
         const start = localStorage.getItem("start value");
+        const incrementValue = localStorage.getItem("incrementValue")
+        if (incrementValue == "0") return true
         if (max && start) {
             if (JSON.parse(max) !== inputMaxValue || JSON.parse(start) !== inputStartValue) return true;
         }
+
         return false;
     }
 
