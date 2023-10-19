@@ -14,6 +14,7 @@ type SettingsMenuPropsType = {
 }
 
 export const SettingsMenu: React.FC<SettingsMenuPropsType> = (props) => {
+    console.log("SettingsMenu IS RENDERING")
     const {
         inputMaxValue,
         setToMaxValue,

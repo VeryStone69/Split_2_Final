@@ -13,6 +13,7 @@ type CountMenuPropsType = {
 }
 
 export const CountMenu: React.FC<CountMenuPropsType> = (props) => {
+    console.log("CountMenu IS RENDERING")
     const {
         error,
         maxCount,
