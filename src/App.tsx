@@ -2,14 +2,20 @@ import React, {useEffect} from 'react';
 import './App.css';
 import {CountMenu} from "./components/CountMenu/CountMenu";
 import {SettingsMenu} from "./components/SetMenu/SettingsMenu";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {AppStateType} from "./bll/store";
-import {incCounterValueAC, setCountMaxAC, setInputMaxValueAC, setInputStartValueAC} from "./bll/counter-reducer";
+import {
+    getValueFromLocalStorageTC,
+    incCounterValueAC,
+    setInputMaxValueAC,
+    setInputStartValueAC
+} from "./bll/counter-reducer";
+import {useAppDispatch} from "./hooks/hooks";
 
 
 
 function App() {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const count = useSelector<AppStateType,number>(state => state.counter.count)
     const countMax = useSelector<AppStateType,number>(state => state.counter.countMax)
     const inputStartValue = useSelector<AppStateType,number>(state => state.counter.newStartValue)
@@ -40,18 +46,7 @@ function App() {
 
     // Получаем значения из LokalStorage и устанавливаем значения в Store. Используется в useEffect() и в setValue()
     const getValuesFromLocalStorage = () => {
-        const getStartValue = localStorage.getItem("start value");
-        const getMaxValue = localStorage.getItem("max value")
-        if (getStartValue) {
-            const newStartValue = JSON.parse(getStartValue)
-            dispatch(incCounterValueAC(newStartValue))
-            dispatch(setInputStartValueAC(newStartValue))
-        }
-        if (getMaxValue) {
-            const newMaxValue = JSON.parse(getMaxValue)
-            dispatch(setCountMaxAC(newMaxValue))
-            dispatch(setInputMaxValueAC(newMaxValue))
-        }
+        dispatch(getValueFromLocalStorageTC())
     }
 
 

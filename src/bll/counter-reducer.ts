@@ -1,4 +1,5 @@
 import {Dispatch} from "redux";
+import {AppThunk} from "./store";
 
 const initialState = {
     count: 0,
@@ -8,7 +9,7 @@ const initialState = {
 }
 
 type InitialStateType = typeof initialState
-type CounterReducerActionType = ReturnType<typeof incCounterValueAC>
+export type CounterReducerActionType = ReturnType<typeof incCounterValueAC>
     | ReturnType<typeof setValueFromLocalStorageAC>
     | ReturnType<typeof setInputStartValueAC>
     | ReturnType<typeof setCountMaxAC>
@@ -59,6 +60,17 @@ export const setInputMaxValueAC=(inputMaxValue:number)=>({
 })
 
 //<=====-THUNK-=====>
-const incValuesTC = () => (dispatch: Dispatch) => {
-
+export const getValueFromLocalStorageTC = ():AppThunk => (dispatch: Dispatch) => {
+    const getStartValue = localStorage.getItem("start value");
+    const getMaxValue = localStorage.getItem("max value")
+    if (getStartValue) {
+        const newStartValue = JSON.parse(getStartValue)
+        dispatch(incCounterValueAC(newStartValue))
+        dispatch(setInputStartValueAC(newStartValue))
+    }
+    if (getMaxValue) {
+        const newMaxValue = JSON.parse(getMaxValue)
+        dispatch(setCountMaxAC(newMaxValue))
+        dispatch(setInputMaxValueAC(newMaxValue))
+    }
 }
